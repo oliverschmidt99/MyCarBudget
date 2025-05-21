@@ -27,83 +27,103 @@ Das Programm ist in Python geschrieben und verwendet die Standardbibliothek Tkin
 
 ### Voraussetzungen
 
-* **Python 3:** Stelle sicher, dass Python 3 (Version 3.7 oder neuer empfohlen) auf deinem System installiert ist. Du kannst Python von [python.org](https://www.python.org/) herunterladen.
-* **pip:** Der Python-Paketmanager wird benötigt, um Abhängigkeiten zu installieren. Er ist normalerweise bei aktuellen Python-Installationen enthalten.
-* **Git:** (Optional) Um das Repository zu klonen.
-* **Make:** (Optional, für Linux/macOS) Das `make`-Build-Tool wird benötigt, um die `Makefile` zu verwenden. Es ist auf den meisten Linux-Distributionen und macOS standardmäßig installiert.
+- **Python 3:** Stelle sicher, dass Python 3 (Version 3.7 oder neuer empfohlen) auf deinem System installiert ist. Du kannst Python von [python.org](https://www.python.org/) herunterladen.
+- **pip:** Der Python-Paketmanager wird benötigt, um Abhängigkeiten zu installieren. Er ist normalerweise bei aktuellen Python-Installationen enthalten.
+- **Git:** (Optional) Um das Repository zu klonen.
+- **Make:** (Optional, für Linux/macOS) Das `make`-Build-Tool wird benötigt, um die `Makefile` zu verwenden. Es ist auf den meisten Linux-Distributionen und macOS standardmäßig installiert.
 
 ### Schritte
 
 1.  **Repository klonen (optional):**
+
     ```bash
-    git clone https://github.com/oliverschmidt99/cost_car_calc/tree/main
+    git clone [https://github.com/oliverschmidt99/cost_car_calc/tree/main](https://github.com/oliverschmidt99/cost_car_calc/tree/main)
     cd cost_car_calc
     ```
+
     Alternativ kannst du die Projektdateien als ZIP herunterladen und entpacken. Stelle sicher, dass sich die Dateien `Makefile` und `requirements.txt` im Hauptverzeichnis befinden.
 
 2.  **Installation der Abhängigkeiten:**
 
-    * **Mit `Makefile` (empfohlen für Linux/macOS):**
-        Navigiere in das Hauptverzeichnis des Projekts (`cost_car_calc`) und führe folgenden Befehl im Terminal aus:
-        ```bash
-        make venv
-        ```
-        Dieser Befehl wird:
-        1.  Eine virtuelle Python-Umgebung im Ordner `.venv` erstellen (falls noch nicht vorhanden).
-        2.  Die virtuelle Umgebung aktivieren.
-        3.  Alle notwendigen Pakete (`matplotlib`, `numpy`) aus der `requirements.txt`-Datei in dieser Umgebung installieren.
+    - **Mit `Makefile` (empfohlen für Linux/macOS):**
+      Navigiere in das Hauptverzeichnis des Projekts (`cost_car_calc`) und führe folgenden Befehl im Terminal aus:
 
-        Vor jeder weiteren Nutzung des Programms solltest du die virtuelle Umgebung aktivieren:
-        ```bash
-        source .venv/bin/activate
-        ```
+      ```bash
+      make venv
+      ```
 
-    * **Manuelle Installation (Windows oder falls `make` nicht verfügbar/gewünscht):**
-        Navigiere in das Hauptverzeichnis des Projekts (`cost_car_calc`). Es wird dringend empfohlen, eine virtuelle Umgebung zu verwenden:
-        ```bash
-        # 1. Virtuelle Umgebung erstellen (einmalig)
-        python -m venv .venv
+      Dieser Befehl wird:
 
-        # 2. Virtuelle Umgebung aktivieren:
-        #    Windows (PowerShell):
-        #    .\.venv\Scripts\Activate.ps1
-        #    Windows (CMD):
-        #    .\.venv\Scripts\activate.bat
-        #    Linux/macOS (falls make nicht verwendet wird):
-        #    source .venv/bin/activate
+      1.  Eine virtuelle Python-Umgebung im Ordner `.venv` erstellen (falls noch nicht vorhanden).
+      2.  (Intern) Die notwendigen Pakete (`matplotlib`, `numpy`) aus der `requirements.txt`-Datei in dieser Umgebung installieren.
 
-        # 3. Abhängigkeiten installieren (innerhalb der aktiven venv):
-        pip install -r requirements.txt 
-        ```
-        Oder direkt (weniger empfohlen als venv):
-        ```bash
-        pip  install --break-system-packages matplotlib numpy
-        ```
-        Stelle sicher, dass `pip` auf die korrekte Python 3-Installation verweist (ggf. `pip3` verwenden).
+      Nach der Erstellung und Installation der Abhängigkeiten durch `make venv`, **aktiviere die virtuelle Umgebung** in deinem Terminal, bevor du das Programm startest:
+
+      ```bash
+      source .venv/bin/activate
+      ```
+
+    - **Manuelle Installation (Windows oder falls `make` nicht verfügbar/gewünscht):**
+      Navigiere in das Hauptverzeichnis des Projekts (`cost_car_calc`). Es wird dringend empfohlen, eine virtuelle Umgebung zu verwenden:
+
+      ```bash
+      # 1. Virtuelle Umgebung erstellen (einmalig)
+      python -m venv .venv
+
+      # 2. Virtuelle Umgebung aktivieren:
+      #    Windows (PowerShell):
+      #    .\.venv\Scripts\Activate.ps1
+      #    Windows (CMD):
+      #    .\.venv\Scripts\activate.bat
+      #    Linux/macOS (falls make nicht verwendet wird):
+      #    source .venv/bin/activate
+
+      # 3. Abhängigkeiten installieren (innerhalb der aktiven venv):
+      pip install -r requirements.txt
+      ```
+
+      Oder direkt (weniger empfohlen als venv), unter Umständen mit `--break-system-packages` falls dein System-Python geschützt ist:
+
+      ```bash
+      pip install matplotlib numpy
+      # oder auf manchen Systemen:
+      # pip install --break-system-packages matplotlib numpy
+      ```
+
+      Stelle sicher, dass `pip` auf die korrekte Python 3-Installation verweist (ggf. `pip3` verwenden).
 
 3.  **Programm starten:**
 
-    * **Mit `Makefile` (nachdem `make venv` ausgeführt wurde und die venv aktiv ist, oder direkt):**
-        ```bash
-        make run
-        ```
-        Dieser Befehl startet das Programm unter Verwendung der virtuellen Umgebung.
+    - **Mit `Makefile` (nachdem die venv aktiviert wurde):**
 
-    * **Manuell (innerhalb der aktivierten virtuellen Umgebung):**
-        ```bash
-        python main.py
-        ```
-    * **Manuell (ohne virtuelle Umgebung, falls so installiert):**
-        ```bash
-        python main.py 
-        ```
-        (Unter Linux/macOS eventuell `python3 main.py` verwenden).
+      ```bash
+      make run
+      ```
+
+      Dieser Befehl startet das Programm unter Verwendung der aktivierten virtuellen Umgebung.
+
+    - **Manuell (innerhalb der aktivierten virtuellen Umgebung):**
+      ```bash
+      python main.py
+      ```
+    - **Manuell (ohne virtuelle Umgebung, falls so installiert):**
+      ```bash
+      python main.py
+      ```
+      (Unter Linux/macOS eventuell `python3 main.py` verwenden).
+
+4.  **Virtuelle Umgebung verlassen:**
+    Wenn du mit der Arbeit fertig bist und die virtuelle Umgebung verlassen möchtest, gib einfach folgenden Befehl in dein Terminal ein:
+    ```bash
+    deactivate
+    ```
+    Dies setzt deine Shell auf den globalen Python-Interpreter zurück.
 
 ### Hinweise für spezifische Betriebssysteme
 
-* **Linux:** Stelle sicher, dass `tkinter` und `python3-venv` installiert sind. Bei vielen Distributionen sind sie standardmäßig enthalten oder leicht nachzuinstallieren (z.B. `sudo apt-get install python3-tk python3-venv` für Debian/Ubuntu).
-* **macOS:** Python, das mit macOS geliefert wird, könnte veraltet sein. Es wird empfohlen, eine aktuelle Version von python.org oder über Paketmanager wie Homebrew zu installieren. Tkinter sollte mit den offiziellen Python-Installationen für macOS funktionieren. `make` ist normalerweise über die Xcode Command Line Tools verfügbar.
-* **Windows:** Für die manuelle Installation enthalten die Python-Installationen von python.org normalerweise Tkinter und pip. Die `Makefile` ist unter Windows nicht direkt ohne zusätzliche Tools (wie "GNU Make for Windows" oder WSL) nutzbar; hier ist die manuelle Installation der empfohlene Weg.
+- **Linux:** Stelle sicher, dass `tkinter` und `python3-venv` installiert sind. Bei vielen Distributionen sind sie standardmäßig enthalten oder leicht nachzuinstallieren (z.B. `sudo apt-get install python3-tk python3-venv` für Debian/Ubuntu).
+- **macOS:** Python, das mit macOS geliefert wird, könnte veraltet sein. Es wird empfohlen, eine aktuelle Version von python.org oder über Paketmanager wie Homebrew zu installieren. Tkinter sollte mit den offiziellen Python-Installationen für macOS funktionieren. `make` ist normalerweise über die Xcode Command Line Tools verfügbar.
+- **Windows:** Für die manuelle Installation enthalten die Python-Installationen von python.org normalerweise Tkinter und pip. Die `Makefile` ist unter Windows nicht direkt ohne zusätzliche Tools (wie "GNU Make for Windows" oder WSL) nutzbar; hier ist die manuelle Installation der empfohlene Weg.
 
 ## Bedienung 👨‍💻
 
