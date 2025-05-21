@@ -4,6 +4,7 @@ from tkinter import ttk, messagebox, filedialog
 import numpy as np
 import json
 import math
+import sys
 import os
 
 from .car import Car
@@ -15,7 +16,28 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.ticker import FuncFormatter
 
-DATA_FILE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data.json'))
+
+
+
+def resource_path(relative_path):
+    """ Den absoluten Pfad zu einer Ressource ermitteln, funktioniert für Dev und für PyInstaller """
+    try:
+        # PyInstaller erstellt einen temporären Ordner und speichert den Pfad in _MEIPASS
+        base_path = sys._MEIPASS
+    except Exception:
+        # Im Entwicklungsmodus: Pfad relativ zum Projektstammverzeichnis
+        # Annahme: gui.py ist in src/, Projektstamm ist ein Level höher
+        # Wenn dein DATA_FILE_PATH und main.py im Stammverzeichnis sind,
+        # und gui.py in src/, dann ist dieser Pfad für den Entwicklungsmodus korrekt.
+        base_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+    return os.path.join(base_path, relative_path)
+
+# Globale Konstante für den Pfad zur data.json
+DATA_FILE_PATH = resource_path('data.json')
+
+
+# DATA_FILE_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data.json'))
 
 
 class CarCostGUI:
