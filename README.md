@@ -2,6 +2,10 @@
 
 Ein Programm zur detaillierten Berechnung und Visualisierung der Kosten eines Autos über dessen gesamte Lebensdauer. Es bietet eine grafische Benutzeroberfläche zur Parametereingabe, Speicherung von Konfigurationen und Darstellung der monatlichen Kosten als gestapeltes Balkendiagramm.
 
+## Screenshot der Anwendung
+
+![Screenshot des Autokostenrechners GUI](assets/screenshot_gui.png)
+
 ## Funktionen ✨
 
 - **Detaillierte Kostenerfassung:** Berücksichtigt Kaufpreis, Betriebskosten, Verbrauch, Versicherung und Finanzierungsdetails (Zinsen, Laufzeit, optionale Schlussrate).
